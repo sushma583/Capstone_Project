@@ -1,0 +1,24 @@
+{%extends 'r_login/base.html'%}
+{%block contain%}
+<div class="login">
+  <h1>Log In</h1>
+  {% if request.user.is_authenticated %}
+  <p class="text-success">You are logged In</p>
+  <p class="text-success">Username : {{request.user.username}}</p>
+  {% else %}
+  <p class="text-danger h3">User is not logged In</p>
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+    <label for ="">Username</label> <br>
+    <input type="text" name="username" placeholder="username"><br>
+    <label for ="">Password</label><br>
+    <input type="password" name="password" placeholder="password"><br>
+    <button type="submit" class="btn">Log In</button>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
+
+  </form>
+</div>
+{%endblock%}

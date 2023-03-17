@@ -1,0 +1,30 @@
+{%extends 'r_login/base.html'%}
+{%block contain%}
+<form method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form}}
+    <input type="submit" value="SELECT">
+</form>
+{%if gallarylist %}
+<table border="2">
+    <tr>
+        <th>IMAGES</th>
+    </tr>
+    {%for i in gallarylist%}
+    <tr>
+        <td><img src="{{i.images.url}}" height="150" , width="150"></td>
+        <td><a href="{%url 'Page_Reg:delete' i.id %}"><button>Delete</button></a></td>
+
+    </tr>
+    {%endfor%}
+</table>
+{%else%}
+<h2>Images are not available</h2>
+{%endif%}
+<a href="{%url 'Page_Reg:logout'%}"><button>Logout</button></a>
+<a href="{%url 'Page_Reg:images'%}"><button>Gallery</button></a>
+<!--<a href="{%url 'Page_Reg:gallary'%}"><button-->
+<!--        id="b1">Gallery</button></a><br>-->
+
+
+{%endblock%}

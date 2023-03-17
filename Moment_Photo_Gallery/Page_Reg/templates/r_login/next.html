@@ -1,0 +1,22 @@
+{%extends 'r_login/base.html'%}
+{%block contain%}
+
+<div style="color:white";>
+{%for msg in messages%}
+<strong>{{msg}}</strong>
+{%endfor%}
+</div>
+
+<body>
+  <div id="app1">
+    <a href="{%url 'Page_Reg:logout'%}"><button>Logout</button></a><a href="{%url 'Page_Reg:gallary'%}"><button
+        id="b1">Gallery</button></a><br>
+  </div>
+
+  <form method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button>Submit</button>
+  </form>
+
+  {%endblock%}
